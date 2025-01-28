@@ -12,7 +12,7 @@ import (
 var (
 	view            *tview.Box
 	app             *tview.Application
-	message         = "HELLO"
+	message         = "ABCDEFGHIJKLMNOPQRSTUVWXYZ 1234567890 BRIAN"
 	ledOn           = "[red:black:b]●[-:-:-]"
 	ledOff          = "[gray:black:d]○[-:-:-]"
 	simpleLedOff    = "○"
