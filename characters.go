@@ -73,8 +73,9 @@ var characterSet = map[rune][][]int{
 	},
 }
 
-func getLedLines(message string, ledOn string, ledOff string) []string {
+func getLedLines(message string, ledOn string, ledOff string) ([]string, int) {
 	var lines []string
+	var ledWidth = 0
 	for _, char := range message {
 		if matrix, ok := characterSet[char]; ok {
 			for i, row := range matrix {
@@ -85,8 +86,10 @@ func getLedLines(message string, ledOn string, ledOff string) []string {
 					} else {
 						line += ledOff
 					}
+					ledWidth++
 				}
 				line += ledOff + ledOff // Add a space between characters
+				ledWidth++              // increment the width for the space
 				if i > len(lines)-1 {
 					lines = append(lines, line)
 				} else {
@@ -95,5 +98,5 @@ func getLedLines(message string, ledOn string, ledOff string) []string {
 			}
 		}
 	}
-	return lines
+	return lines, ledWidth
 }
